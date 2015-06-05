@@ -1,4 +1,4 @@
-PhantomJS
+Ansible PhantomJS Role
 =========
 
 Installs PhantomJS 64-bit binary
