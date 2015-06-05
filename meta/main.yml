@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Ben Einwechter
+  description: Install PhantomJS binary
+  company: RoleModel Software, Inc.
+  license: GPLv3
+  min_ansible_version: 1.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - trusty
+
+dependencies: []

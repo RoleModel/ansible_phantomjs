@@ -1,0 +1,31 @@
+---
+- name: Install PhantomJS dependencies
+  apt:
+    name: libfontconfig1-dev
+    state: present
+    update_cache: yes
+  become: yes
+  become_method: sudo
+
+- name: Download PhantomJS binary
+  get_url:
+    url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-{{ phantomjs_version }}-linux-x86_64.tar.bz2
+    dest: /tmp/phantomjs-{{ phantomjs_version }}-linux-x86_64.tar.bz2
+
+- name: Uncompress PhantomJS
+  unarchive:
+    src: /tmp/phantomjs-{{ phantomjs_version }}-linux-x86_64.tar.bz2
+    dest: /usr/local/share
+    creates: /usr/local/share/phantomjs-{{ phantomjs_version }}-linux-x86_64/bin/phantomjs
+    copy: no
+  become: yes
+  become_method: sudo
+
+- name: Link PhantomJS binary
+  file:
+    src: /usr/local/share/phantomjs-{{ phantomjs_version }}-linux-x86_64/bin/phantomjs
+    dest: /usr/local/bin/phantomjs
+    state: link
+  become: yes
+  become_method: sudo
+
